@@ -6,6 +6,12 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Data.Entity;
+using HR_module.Models;
+using Ninject.Modules;
+using HR_module.Util;
+using Ninject;
+using Ninject.Web.Mvc;
 
 namespace HR_module
 {
@@ -13,11 +19,18 @@ namespace HR_module
     {
         protected void Application_Start()
         {
+            Context db = new Context();
+            db.Database.Initialize(true);
+
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            NinjectModule registrations = new NinjectRegistrations();
+            var kernel = new StandardKernel(registrations);
+            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }
     }
 }
