@@ -3,45 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Ninject;
-using System.Web.Mvc;
+using System.Web.Http.Dependencies;
 using HR_module.Models;
 using HR_module.Util;
 
 
 namespace TaskWebApplication.Util
 {
-    public class NinjectDependencyResolver : IDependencyResolver
+    public class NinjectDependencyResolver : NinjectScope, IDependencyResolver, System.Web.Mvc.IDependencyResolver
     {
         private readonly IKernel kernel;
 
         public NinjectDependencyResolver(IKernel kernelParam)
+            : base(kernelParam)
         {
-            kernel = kernelParam;
-            AddBindings();
+            kernel = kernelParam;     
         }
 
-        //public IDependencyScope BeginScope()
-        //{
-        //    return new NinjectScope(kernel.BeginBlock());
-        //}
-
-
-        public object GetService(Type serviceType)
+        public IDependencyScope BeginScope()
         {
-            return kernel.TryGet(serviceType);
+            return new NinjectScope(kernel.BeginBlock());
         }
 
-        public IEnumerable<object> GetServices(Type serviceType)
-        {
-            return kernel.GetAll(serviceType);
-        }
 
-        private void AddBindings()
-        {
-
-            //kernel.Bind(typeof(IRepository<>)).To(typeof(repository))
-            kernel.Bind<IRepository<Candidate>>().To<CandidateRepository>();
-           
-        }
+        
     }
 }

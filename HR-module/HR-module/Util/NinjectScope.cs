@@ -14,6 +14,7 @@ namespace HR_module.Util
         protected IResolutionRoot resolutionRoot;
         public NinjectScope(IResolutionRoot kernel)
         {
+            
             resolutionRoot = kernel;
         }
         public object GetService(Type serviceType)

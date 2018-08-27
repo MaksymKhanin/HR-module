@@ -12,6 +12,8 @@ using Ninject.Modules;
 using HR_module.Util;
 using Ninject;
 using Ninject.Web.Mvc;
+using Ninject.Web.Common;
+
 
 namespace HR_module
 {
@@ -30,7 +32,12 @@ namespace HR_module
 
             NinjectModule registrations = new NinjectRegistrations();
             var kernel = new StandardKernel(registrations);
-            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
+            var ninjectResolver = new NinjectDependencyResolver(kernel);
+            //GlobalConfiguration.Configuration.DependencyResolver = 
+            //    (System.Web.Http.Dependencies.IDependencyResolver)new NinjectDependencyResolver(kernel);
+
+            DependencyResolver.SetResolver(ninjectResolver);
+            
         }
     }
 }

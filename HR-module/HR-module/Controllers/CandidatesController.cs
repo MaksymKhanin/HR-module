@@ -18,7 +18,7 @@ namespace HR_module.Controllers
         }
         public CandidatesController()
         {
-
+            
         }
 
         [HttpGet]

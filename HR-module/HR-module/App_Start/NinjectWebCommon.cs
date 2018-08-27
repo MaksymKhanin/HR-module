@@ -54,6 +54,7 @@ namespace TaskWebApplication.App_Start
                 //kernel.Bind<OrganisationsContext>().ToSelf().InRequestScope();
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
+                //System.Web.Http.GlobalConfiguration.Configuration.DependencyResolver  = new Ninject.Web.WebApi.
 
                 RegisterServices(kernel);
                 //GlobalConfiguration.Configuration.DependencyResolver = new Ninject.Web.WebApi.NinjectDependencyResolver(kernel);
@@ -75,6 +76,7 @@ namespace TaskWebApplication.App_Start
         {
             DependencyResolver.SetResolver(new Util.NinjectDependencyResolver(kernel));
 
+            kernel.Bind<IRepository<Candidate>>().To<CandidateRepository>();
             //kernel.Bind<IRepository<Organisation>>().To<OrganisationRepository>();
             //kernel.Bind<IRepository<Bill>>().To<BillRepository>();
             //kernel.Bind<IRepository<Operation>>().To<OperationRepository>();
