@@ -11,12 +11,12 @@ function initGrid() {
 var dataSource = new kendo.data.DataSource({
     transport: {
         read: {
-            url: "http://localhost:52811/api/candidates/GetCandidates/",
+            url: "http://localhost:52811/api/candidatesapi/GetCandidates/",
             type: "get",
             dataType: "json"
         },
         create: {
-            url: "http://localhost:52811/api/candidates/PostCandidate/",
+            url: "http://localhost:52811/api/candidatesapi/PostCandidate/",
             type: "post",
             dataType: "json",
             complete: function (e) {
@@ -24,7 +24,7 @@ var dataSource = new kendo.data.DataSource({
             }
         },
         update: {
-            url: "http://localhost:52811/api/candidates/PutCandidate/",
+            url: "http://localhost:52811/api/candidatesapi/PutCandidate/",
             type: "put",
             dataType: "json",
             complete: function (e) {
@@ -32,7 +32,7 @@ var dataSource = new kendo.data.DataSource({
             }
         },
         destroy: {
-            url: "http://localhost:52811/api/candidates/DeleteCandidate/",
+            url: "http://localhost:52811/api/candidatesapi/DeleteCandidate/",
             type: "delete",
             dataType: "json"
         }

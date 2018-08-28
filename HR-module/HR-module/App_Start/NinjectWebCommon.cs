@@ -8,7 +8,6 @@ namespace TaskWebApplication.App_Start
     using Ninject.Web.Common.WebHost;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
     using Ninject;
     using Ninject.Web.Common;
     using System.Web.Mvc;
@@ -17,6 +16,9 @@ namespace TaskWebApplication.App_Start
     using System.Web.Http;
     using Ninject.Web.Mvc;
     using Ninject.Web.WebApi;
+    using HR_module.Infrastructure.Repository.DI.Abstract;
+    using HR_module.Infrastructure.Repository.DI.Implementation;
+    using HR_module.Models.Contexts;
 
 
     public static class NinjectWebCommon
@@ -76,7 +78,7 @@ namespace TaskWebApplication.App_Start
         {
             DependencyResolver.SetResolver(new Util.NinjectDependencyResolver(kernel));
 
-            kernel.Bind<IRepository<Candidate>>().To<CandidateRepository>();
+            kernel.Bind<ICandidatesRepository<Candidate>>().To<CandidateRepository>();
             //kernel.Bind<IRepository<Organisation>>().To<OrganisationRepository>();
             //kernel.Bind<IRepository<Bill>>().To<BillRepository>();
             //kernel.Bind<IRepository<Operation>>().To<OperationRepository>();

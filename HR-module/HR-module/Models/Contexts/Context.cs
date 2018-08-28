@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace HR_module.Models
+namespace HR_module.Models.Contexts
 {
     public class Context:DbContext
         

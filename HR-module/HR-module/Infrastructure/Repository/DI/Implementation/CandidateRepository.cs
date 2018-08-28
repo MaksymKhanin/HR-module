@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using HR_module.Models.Contexts;
+using HR_module.Models;
+using HR_module.Infrastructure.Repository.DI.Abstract;
 
-namespace HR_module.Models
+namespace HR_module.Infrastructure.Repository.DI.Implementation
 {
-    public class CandidateRepository : IRepository<Candidate>
+    public class CandidateRepository : ICandidatesRepository<Candidate>
     {
         private Context db;
 

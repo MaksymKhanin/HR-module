@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HR_module.Models
+namespace HR_module.Infrastructure.Repository.DI.Abstract
 {
-    public interface IRepository<T> : IDisposable
+    public interface ICandidatesRepository<T> : IDisposable
        where T : class
     {
 

@@ -8,6 +8,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Data.Entity;
 using HR_module.Models;
+using HR_module.Models.Contexts;
 using Ninject.Modules;
 using HR_module.Util;
 using Ninject;
