@@ -9,3 +9,156 @@
         <i class='k-icon k-i-plus'></i> Додати кандидата
     </button>
 </script>
+
+<script id="candidateWindowTemplate" type="text/x-kendo-template">
+        <label class="k-label" style="margin-left:15px; margin-top:10px"><b>Номер договору</b></label>
+        <div class="container-fluid">
+            <div class="row">
+                <div id="left-block" class="col-xs-6 ">
+                    <div class="panel panel-default" style="width: 550px;">
+                        <div class="panel-body">
+                            <table id="cnTable">
+                                <tr>
+                                    <td><label for="reference" class="k-label"><b>Референс</b></label></td>
+                                    <td><input id="reference" class="k-textbox k-input" /></td>
+                                    <td><label for="reference" class="k-label"><b>№ договору</b></label></td>
+                                    <td><input id="contractId" class="k-textbox k-input" /></td>
+                                </tr>
+                            </table>
+                        </div>
+                        @*style="width: 690px !important; margin-bottom: 20px;"*@
+                    </div>
+
+                    <div class="row" style="margin-top:30px">
+                        <div class="col-xs-2 " style="margin-right:-6px"><label class="k-label"><b>Період дії</b></label></div>
+                        <div id="from-block" class="col-xs-3 ">
+                            <label for="startDate" class="k-label label-width"><b>З</b></label>
+                            <input id="startDate" data-type="date" name="startDate" />
+                        </div>
+                        <div id="to-block" class="col-xs-3 ">
+                            <label for="dueDate" class="k-label label-width" style="margin-left:-20px"><b>По</b></label>
+                            <input id="dueDate" data-type="date" name="dueDate" />
+                        </div>
+                        <div id="prolongation-block" class="col-xs-2 " style="margin-left:-18px">
+                            <label for="prolongation" class="k-label"><b>Пролонгація</b></label>
+                            <input type="checkbox" id="prolongation">
+                        </div>
+                    </div>
+                    <div class="row window-top-buffer">
+                        <div class="col-xs-3 " style="padding-right:0px">
+                            <label class="k-label" for="customerName"><b>Найменування контрагента</b></label>
+                        </div>
+                        <div class="col-xs-8 " style="padding-left:0px; margin-left:-20px">
+                            <input id="customerName" class="k-textbox k-input input-width" readonly="readonly" style="width:508px" />
+                        </div>
+                    </div>
+                    <div class="row window-top-buffer">
+                        <div class="col-xs-3 ">
+                            <label class="k-label" for="customerEdrpou"><b>ЄДРПОУ контрагента</b></label>
+                        </div>
+                        <div class="col-xs-6 " style="margin-left:-50px">
+                            <input id="customerEdrpou" class="k-textbox k-input input-ref-width" readonly="readonly" style="width:460px" />
+                        </div>
+                        <div class="col-xs-1 " style="margin-left:49px">
+                            <button id="edrpouBookBtn" class="k-button" title="ЄДРПОУ" style="width: 30px;">
+                                <i class='pf-icon pf-16 pf-book'></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row window-top-buffer">
+                        <div class="col-xs-3 ">
+                            <label class="k-label" for="mfo"><b>МФО</b></label>
+                        </div>
+                        <div class="col-xs-8 " style="margin-left:-50px">
+                            <input id="mfo" class="k-textbox k-input input-width" style="width:508px" />
+                        </div>
+                    </div>
+                    <div class="row window-top-buffer">
+                        <div class="col-xs-3">
+                            <label class="k-label" for="requisites"><b>Реквізити</b></label>
+                        </div>
+                        <div class="col-xs-8 " style="margin-left:-50px">
+                            <input id="requisites" class="k-textbox k-input input-width" style="width:508px" />
+                        </div>
+                    </div>
+                </div>
+                <div id="right-block" class="col-xs-5">
+                    <div id="row-bill-for-pay" class="row" style="margin-top:125px; margin-left:-50px">
+                        <div class="col-xs-3 ">
+                            <label id="row-bill-for-pay label" class="k-label" for="acc3739"><b>Рахунок для оплати(3739)</b></label>
+                        </div>
+                        <div class="col-xs-6 ">
+                            <input id="acc3739" class="k-textbox k-input input-reserv-width" readonly="readonly" style="width:370px" />
+                        </div>
+                        <div class="col-xs-1 ">
+                            <button id="reserv3739" class="k-button" title="Резерв" style="width: 92px;">
+                                Резерв
+                            </button>
+                        </div>
+                    </div>
+                    <div id="row-bill-for-pay2" class="row window-top-buffer" style="margin-left:-50px">
+                        <div class="col-xs-3 ">
+                            <label id="row-bill-for-pay2 label" class="k-label" for="acc3570"><b>Рахунок для комісії(3570)</b></label>
+                        </div>
+                        <div class="col-xs-6 ">
+                            <input id="acc3570" class="k-textbox k-input input-reserv-width" readonly="readonly" style="width:370px" />
+                        </div>
+                        <div class="col-xs-1 ">
+                            <button id="reserv3570" class="k-button" title="Резерв" style="width: 92px;">
+                                Резерв
+                            </button>
+                        </div>
+                    </div>
+                    <div id="row-contract-type" class="row window-top-buffer" style="margin-left:-50px">
+                        <div class="col-xs-3 ">
+                            <label id="row-contract-type label" class="k-label" for="contractType"><b>Тип договору</b></label>
+                        </div>
+                        <div id="contractType-col" class="col-xs-7 ">
+                            <input id="contractType" name="contractType" />
+                        </div>
+                    </div>
+                    <div id="row-end-date" class="row window-top-buffer" style="margin-left:-50px">
+                        <div class="col-xs-3 ">
+                            <label id="row-end-date label" class="k-label" for="lastDayPayments"><b>Кінцева дата оплати</b></label>
+                        </div>
+                        <div class="col-xs-7 ">
+                            <input id="lastDayPayments" name="paymentEndDate" />
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="row window-top-buffer" style="margin-top:30px">
+                <div id="services-and-payments" class="col-xs-1 ">
+                    <label class="k-label" for="servicesGrid"><b>Послуги та платежі</b></label>
+                </div>
+                <div id="services-and-payments-grid" class="col-xs-9 ">
+                    <div id="servicesGrid" style="margin-left:22px; width:1265px"></div>
+                </div>
+            </div>
+            <div class="row window-top-buffer" style="margin-top:30px">
+                <div id="commentsLabel" class="col-xs-1 ">
+                    <label class="k-label" for="comments"><b>Коментарі</b></label>
+                </div>
+                <div id="commentsArea" class="col-xs-9 ">
+                    <textarea cols="150" id="comments" style="max-width: 1261px; min-width:508px; width: 1261px; height: 70px; margin-left:22px; min-height:50px; max-height:250px; "></textarea>
+                </div>
+            </div>
+        </div>
+
+        <hr style="width:100%;" />
+
+        <div style="float: right;">
+            <button id="btnSave" class="k-button" title="Зберегти" style="width: 120px;">
+                <i class='pf-icon pf-16 pf-save'></i> Зберегти
+            </button>
+            <button id="btnCancel" class="k-button contractFormBtnCancel" title="Відмінити" style="width: 120px; margin-right:73px">
+                <i class='pf-icon pf-16 pf-delete'></i> Відмінити
+            </button>
+        </div>
+
+
+    </script>
+    
